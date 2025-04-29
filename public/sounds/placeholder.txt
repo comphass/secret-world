@@ -1,0 +1,7 @@
+
+Placeholder file for sounds directory. Replace with actual sound files:
+- correct.mp3 - Sound for correct letter
+- incorrect.mp3 - Sound for incorrect letter
+- win.mp3 - Sound when player wins
+- lose.mp3 - Sound when player loses
+- start.mp3 - Sound when game starts
