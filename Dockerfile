@@ -1,22 +1,19 @@
-# Etapa 1: build
-FROM node:18-alpine AS build
+FROM node:18
 
+# Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copia apenas os arquivos necessários para instalar dependências
+# Copia os arquivos de dependências
 COPY package*.json ./
-RUN npm ci --omit=dev
 
-# Copia o restante do código da aplicação
+# Instala as dependências
+RUN npm install
+
+# Copia o restante dos arquivos do projeto
 COPY . .
 
-# Etapa 2: imagem final e leve
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY --from=build /app /app
-
+# Expõe a porta que a aplicação irá utilizar
 EXPOSE 3000
 
-CMD ["node", "src/server.js"]
+# Comando para iniciar a aplicação
+CMD ["npm", "start"]
