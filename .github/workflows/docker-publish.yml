@@ -27,7 +27,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: seu-usuario-dockerhub/secret-world
+          images: ${{ secrets.DOCKER_USERNAME }}/secret-world
 
       - name: Construir e enviar imagem
         uses: docker/build-push-action@v5
