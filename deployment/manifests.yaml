@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: secret-world
-        image: docker.io/seu-usuario/secret-world:latest
+        image: docker.io/eduhass/secret-world:main
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
