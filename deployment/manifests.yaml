@@ -78,6 +78,6 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-  - secret-world.hasslab.tech  # Substitua pelo seu domínio real
+  - secretworld.hasslab.tech  # Substitua pelo seu domínio real
   duration: 2160h # 90d
   renewBefore: 360h # 15d
