@@ -1,19 +1,12 @@
-FROM node:18
-
-# Define o diretório de trabalho dentro do contêiner
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# Copia os arquivos de dependências
 COPY package*.json ./
-
-# Instala as dependências
-RUN npm install
-
-# Copia o restante dos arquivos do projeto
+RUN npm ci
 COPY . .
+RUN npm run build
 
-# Expõe a porta que a aplicação irá utilizar
-EXPOSE 3000
-
-# Comando para iniciar a aplicação
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
