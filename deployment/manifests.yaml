@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: secret-world
+  namespace: secret-world
 spec:
   replicas: 1
   selector:
@@ -16,7 +17,7 @@ spec:
       - name: secret-world
         image: docker.io/eduhass/secret-world:main
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           limits:
             cpu: "0.5"
@@ -27,13 +28,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080  # Mudou de 80 para 8080
           initialDelaySeconds: 10
           periodSeconds: 5
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080  # Mudou de 80 para 8080
           initialDelaySeconds: 15
           periodSeconds: 20
 ---
@@ -46,8 +47,8 @@ spec:
   selector:
     app: secret-world
   ports:
-  - port: 80
-    targetPort: 3000
+  - port: 80           # Porta do serviço 
+    targetPort: 8080   # Porta do container
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
