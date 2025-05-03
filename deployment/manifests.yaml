@@ -25,18 +25,18 @@ spec:
           requests:
             cpu: "0.2"
             memory: "256Mi"
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080  # Mudou de 80 para 8080
-          initialDelaySeconds: 10
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080  # Mudou de 80 para 8080
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080  # Mudou de 80 para 8080
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080  # Mudou de 80 para 8080
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 20
 ---
 apiVersion: v1
 kind: Service
