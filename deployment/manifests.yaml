@@ -26,12 +26,12 @@ spec:
           requests:
             cpu: "0.2"
             memory: "256Mi"
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 8080  # Mudou de 80 para 8080
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080  # Mudou de 80 para 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
         # livenessProbe:
         #   httpGet:
         #     path: /
@@ -59,6 +59,7 @@ metadata:
   namespace: secret-world
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   tls:
@@ -69,7 +70,7 @@ spec:
   - host: secretworld.hasslab.tech
     http:
       paths:
-      - path: /app
+      - path: /
         pathType: Prefix
         backend:
           service:
