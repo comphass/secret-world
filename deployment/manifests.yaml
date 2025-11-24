@@ -64,10 +64,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - secretworld.hasslab.tech
+    - secretworld.hasslab.pro
     secretName: secret-world-tls
   rules:
-  - host: secretworld.hasslab.tech
+  - host: secretworld.hasslab.pro
     http:
       paths:
       - path: /
@@ -89,6 +89,6 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-  - secretworld.hasslab.tech  # Substitua pelo seu domínio real
+  - secretworld.hasslab.pro  # Substitua pelo seu domínio real
   duration: 2160h # 90d
   renewBefore: 360h # 15d
